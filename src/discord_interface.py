@@ -13,6 +13,7 @@ is_game = False #Tells if there is currently a game going on
 is_joining = False #Tells if people can join the game
 player_list = [] #List of all the players and bots on the game
 add_message = None #Message that react to to be added to the game
+game_channel = None #Where the game takes place
 
 #Player / Bot Class
 class Player():
@@ -41,7 +42,7 @@ class Player():
                 self.input = -1
                 return False
         try: #Wait for the host to end stop the game before starting
-            await client.wait_for('message', timeout=20.0, check=check)
+            await client.wait_for('message', timeout=10.0, check=check)
         except asyncio.TimeoutError:
             self.send_message("Timeouted")   
 
@@ -52,9 +53,9 @@ class Player():
                 await self.user.create_dm()
             self.channel = self.user.dm_channel
 
-
 async def send_message(text):
-    await channel.send(text)
+    global game_channel
+    await game_channel.send(text)
 
 #Set-up
 load_dotenv()
@@ -72,8 +73,8 @@ async def on_ready():
 @client.command(name='begin')
 @commands.has_role('Admin')
 async def begin(ctx, minn=8, maxn=20):
-    global is_game, add_message, is_joining, player_list
-    channel = ctx.channel
+    global is_game, add_message, is_joining, player_list, game_channel
+    game_channel = ctx.channel
     if is_game: #Check if already in a game
        return
     #Set game starting variables
