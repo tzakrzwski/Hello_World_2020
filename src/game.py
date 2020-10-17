@@ -11,8 +11,8 @@ class game:
 		# print('Game, runSimulation tester')
 		self.tributes = []  # creates an array with all tributes
 		# make the tributes
-        for player in player_list:
-            makeOneTribute(player)
+		for player in player_list:
+			makeOneTribute(player)
 		gameContinues = True  # determines if game continues
 		day = 0
 		while (gameContinues):
