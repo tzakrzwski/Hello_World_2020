@@ -7,4 +7,4 @@ from dotenv import load_dotenv
 import tribute.py
 class Game:
 	def runSimulation():
-		print('Hello')
+		await message.channel.send('Game, runSimulation tester')
