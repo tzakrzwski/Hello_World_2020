@@ -3,6 +3,14 @@ import random
 
 
 class Tribute:
+    def getIsAlive(): 
+        return IsAlive
+    def setIsAlive():
+        IsAlive = False
+        return IsAlive
+    def getName():
+        return name
+    
     def _init_(self, name, survival, fight, hide)
     	self.name = name
     	self.survival = survival
