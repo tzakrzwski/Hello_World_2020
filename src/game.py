@@ -47,6 +47,26 @@ class game:
 				print('Hunger games over')
 										 
 				
+	def makeOneTribute():
+		print("Please enter the name of your tribute.")
+		tempName = input()
+		print("From a scale of 1-5, rate your tribute's survival skills.")
+		tempSurvival = input()
+		while (int(tempSurvival) < 1 or int(tempSurvival) > 5):
+			print("Invalid number, try again.")
+			tempSurvival = input()
+		print("From a scale of 1-5, rate your tribute's fighting skills.")
+		tempFight = input()
+		while  (int(tempFight) < 1 or int(tempFight) > 5):
+			print("Invalid number, try again.")
+			tempFight = input()
+		print("From a scale of 1-5, rate your tribute's hiding skills.")
+		tempHide = input()
+		while (int(tempHide) < 1 or int(tempHide) > 5):
+			print("Invalid number, try again.")
+			tempSurvival = input()
+		self.tributes.append(tribute(tempName, tempSurvival, tempFight, tempHide))
+	
 	def makeTributes(self):
 		while (True):
 			print("Please enter the name of your tribute.")
