@@ -9,6 +9,23 @@ class Tribute:
     	self.fight = fight
     	self.hide = fight 
     
+    def survive():
+        if int(self.survival) == 1:
+            LikelyhoodSurvive = random.randint(25, 100); # 66% chance of living
+        elif int(self.survival) == 2:
+            LikelyhoodSurvive = random.randint(35, 100); # 77% chance of living
+        elif int(self.survival) == 3:
+            LikelyhoodSurvive = random.randint(40, 100); #83% chance of living
+        elif int(self.survival) == 4:
+            LikelyhoodSurvive = random.randint(45, 100); # 90% chance
+        else:
+            LikelyhoodSurvive = random.randint(50, 100); #100% chance
+        if LikelyhoodSurvive > 50;
+            LiveAnotherDay = True
+        else:
+            LiveAnotherDay = False
+        return LiveAnotherDay
+    
     def fight():
         if int(self.fight) == 1:
             likelyhood = random.randint(0, 60);
@@ -21,3 +38,4 @@ class Tribute:
         else:
             likelyhood = random.randint(80, 100);
         return likelyhood
+    
