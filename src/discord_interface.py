@@ -19,7 +19,7 @@ game_channel = None #Where the game takes place
 class Player():
 
     def __init__(self, user=None):
-        self.input = None #Store the value from input
+        self.inputx = None #Store the value from input
         #Init stuff for human player
         self.user = user
         if user:
@@ -32,7 +32,9 @@ class Player():
     async def send_message(self, text):
         await self.channel.send(text)
     
-    async def input(self, prompt): #USE self.input to access data
+    async def input(self, prompt=''): #USE self.input to access data
+        if self.channel == None:
+            self.input = random.randint(1,5)
         def check(message): #Check to see if person who started game canceled
             #input parsing
             try:
@@ -100,6 +102,8 @@ async def begin(ctx, minn=8, maxn=20):
             x += player.name + '\n'
         await channel.send(x)
         await channel.send("You will be DMed instructions on how to begin")
+        game1 = game()
+        game1.runSimulation()
     else:
         await channel.send('Host canceled game')
         is_game = False
