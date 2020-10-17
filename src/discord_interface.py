@@ -24,13 +24,10 @@ async def on_ready():
 @client.command(name='begin')
 @commands.has_role('Admin')
 async def begin(ctx, min=8, max=20):
-    ctx.guild.channels[0].send('Yes?')
     print('hello')
     #if is_game and not ctx.guild: #Check if already in a game AND in a server
        # return
-    
-    for member in ctx.guild.members:
-        print(member.nick)
+    print(ctx.guild)
 
         
 
