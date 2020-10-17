@@ -18,6 +18,7 @@ add_message = None #Message that react to to be added to the game
 class Player():
 
     def __init__(self, user=None):
+        self.input = None #Store the value from input
         #Init stuff for human player
         self.user = user
         if user:
@@ -30,12 +31,30 @@ class Player():
     async def send_message(self, text):
         await self.channel.send(text)
     
+    async def input(self, prompt): #USE self.input to access data
+        def check(message): #Check to see if person who started game canceled
+            #input parsing
+            try:
+                self.input = int(message.content)
+                return True
+            except:
+                self.input = -1
+                return False
+        try: #Wait for the host to end stop the game before starting
+            await client.wait_for('message', timeout=20.0, check=check)
+        except asyncio.TimeoutError:
+            self.send_message("Timeouted")   
+
     async def create_channel(self):
         if self.user:
             #Create / Get Dm channel
             if not self.user.dm_channel:
                 await self.user.create_dm()
             self.channel = self.user.dm_channel
+
+
+async def send_message(text):
+    await channel.send(text)
 
 #Set-up
 load_dotenv()
