@@ -9,3 +9,5 @@ def inputD(message, player_name, answers):
         if x in answers:
             return x
 
+game1 = Game()
+game1.runSimulation()

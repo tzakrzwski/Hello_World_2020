@@ -2,15 +2,21 @@
 import random
 
 
-class tribute:
-    def fight(tempFight):
-        if tempFight == 1:
+class Tribute:
+    def _init_(self, name, survival, fight, hide)
+    	self.name = name
+    	self.survival = survival
+    	self.fight = fight
+    	self.hide = fight 
+    
+    def fight():
+        if int(self.fight) == 1:
             likelyhood = random.randint(0, 60);
-        elif tempFight == 2:
+        elif int(self.fight) == 2:
             likelyhood = random.randint(20, 80);
-        elif tempFight == 3:
+        elif int(self.fight) == 3:
             likelyhood = random.randint(40, 100);
-        elif tempFight == 4:
+        elif int(self.fight) == 4:
             likelyhood = random.randint(60, 100);
         else:
             likelyhood = random.randint(80, 100);
