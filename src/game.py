@@ -34,7 +34,7 @@ class Game:
 						print(self.tributes[x].getName() + ' died from starvation.')
 						deadTributes.append(self.tributes[x])
 			for x in range(len(self.tributes)): #finds and removes all dead tributes
-				if (not self.tributes[x].getIsAlive):
+				if (not self.tributes[x].getIsAlive()):
 					self.tributes.pop(x)
 			if len(self.tributes) < 2: #if there is only one tribute left, hunger games is over
 				gameContinues = False
