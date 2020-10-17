@@ -8,4 +8,3 @@ def inputD(message, player_name, answers):
         x = input(message)
         if x in answers:
             return x
-
