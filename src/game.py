@@ -7,7 +7,7 @@ import random
 import tribute
 class game:
 	def runSimulation(self):
-		print('Game, runSimulation tester')
+		#print('Game, runSimulation tester')
 		self.tributes = [] #creates an array with all tributes
 		self.makeTributes()
 		gameContinues = True #determines if game continues
@@ -26,25 +26,29 @@ class game:
 						fight1 = self.tributes[x].battle()
 						fight2 = self.tributes[otherTribute].battle()
 						if (fight1 > fight2):
-							print(self.tributes[x].getName() + ' murdered ' + self.tributes[otherTribute].getName())
+							send_message(self.tributes[x].getName() + ' murdered ' + self.tributes[otherTribute].getName())
 							deadTributes.append(self.tributes[x])
 						elif (fight2 > fight1):
-							print(self.tributes[otherTribute].getName() + ' murdered ' + self.tributes[x].getName())
+							send_message(self.tributes[otherTribute].getName() + ' murdered ' + self.tributes[x].getName())
 							self.tributes[otherTribute].setIsAlive()
 							deadTributes.append(self.tributes[x])
 					else:
-						print(self.tributes[x].getName() + ' died from starvation.')
+						send_message(self.tributes[x].getName() + ' died from starvation.')
 						deadTributes.append(self.tributes[x])
-			for x in range(len(self.tributes)): #finds and removes all dead tributes
-				if (self.tributes[x].getIsAlive()):
-					self.tributes.pop(x)
-					x = x - 1
-			print('End of day ' + str(day))
+			#for x in range(len(self.tributes)): #finds and removes all dead tributes
+				#if (self.tributes[x].getIsAlive()):
+					#self.tributes.pop(x)
+					#x = x - 1
+			send_message('End of day ' + str(day))
 			for x in range(len(deadTributes)):
-				print(deadTributes[x].getName() + ' has tragically died.') 
-			if len(self.tributes) < 2: #if there is only one tribute left, hunger games is over
+				send_message(deadTributes[x].getName() + ' has tragically died.') 
+			tributes_alive = 0
+			for x in range(len(self.tributes)):
+				if (self.tributes[x].getIsAlive()):
+					tributes_alive = tributes_alive + 1
+			if (tributes_alive < 2):	
 				gameContinues = False
-				print('Hunger games over')
+				send_message('Hunger games over')
 										 
 				
 	def makeOneTribute():
