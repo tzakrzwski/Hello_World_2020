@@ -11,7 +11,9 @@ class Game:
 		self.tributes[] #creates an array with all tributes
 		makeTributes()
 		gameContinues = True #determines if game continues
+		day = 0 
 		while (gameContinues):
+			day = day + 1
 			deadtributes[] #creates an array for dead tributes
 			for x in range(len(self.tributes)):
 				if (self.tributes[x].getisAlive()): #if tribute is already dead, tribute does not perform actions
@@ -24,18 +26,21 @@ class Game:
 						fight1 = self.tributes[x].fight()
 						fight2 = self.tributes[otherTribute].fight()
 						if (fight1 > fight2):
-							print(self.tributes[x].getName() + ' murdered ' + self.tributes[otherTribute])
+							print(self.tributes[x].getName() + ' murdered ' + self.tributes[otherTribute].getName())
 							deadTributes
 						elif (fight2 > fight1)
-							print(self.tributes[otherTribute].getName() + ' murdered ' + self.tributes[x])
+							print(self.tributes[otherTribute].getName() + ' murdered ' + self.tributes[x].getName())
 							self.tributes[otherTribute].setIsAlive()
 							deadTributes.append(self.tributes[x])
 					else:
 						print(self.tributes[x].getName() + ' died from starvation.')
-						deadTributes.append(self.tributes[x])
+				ay 		deadTributes.append(self.tributes[x])
 			for x in range(len(self.tributes)): #finds and removes all dead tributes
 				if (not self.tributes[x].getIsAlive()):
 					self.tributes.pop(x)
+			print('End of day ' + day)
+			for x in range(len(deadTributes)):
+				print(deadTributes[x].getName() + ' has tragically died.') 
 			if len(self.tributes) < 2: #if there is only one tribute left, hunger games is over
 				gameContinues = False
 				print('Hunger games over')
