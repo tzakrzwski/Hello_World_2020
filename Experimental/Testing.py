@@ -13,16 +13,14 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    guild = discord.utils.get(client.guilds, name=GUILD)
     print(f'{client.user} has connected to Discord!')
-    #f'{client.user} is connected to the following guild:\n'
-    #print(f'{guild.name}(id: {guild.id})')
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
     
+    print(message.channel.__dir__())
     if message.content == 'Beeg':
         await message.channel.send('Do you guys have the Big Yoshi?')
 
