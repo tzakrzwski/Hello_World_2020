@@ -26,7 +26,7 @@ class game:
 					if (self.tributes[x].survive()): #returns true if tribute survives
 						otherTribute = x
 						counter = 0
-						while (otherTribute == x or not self.tributes[otherTribute].getIsAlive() or counter < 5): #avoids a tribute fighting themself or a dead tribute 
+						while (otherTribute == x or self.tributes[otherTribute].getIsAlive() == False or counter < 5): #avoids a tribute fighting themself or a dead tribute 
 							otherTribute = random.randrange(0, len(self.tributes))
 							counter = counter + 1
 						fight1 = self.tributes[x].battle()
@@ -41,14 +41,14 @@ class game:
 					else:
 						print(self.tributes[x].getName() + ' died from starvation.')
 						deadTributes.append(self.tributes[x])
+			count = 0
 			for x in range(len(self.tributes)): #finds and removes all dead tributes
 				if (self.tributes[x].getIsAlive()):
-					self.tributes.pop(x)
-					x = x - 1
+					count = count + 1
 			print('End of day ' + str(day))
 			for x in range(len(deadTributes)):
 				print(deadTributes[x].getName() + ' has tragically died.') 
-			if len(self.tributes) < 2: #if there is only one tribute left, hunger games is over
+			if count < 2: #if there is only one tribute left, hunger games is over
 				gameContinues = False
 				print('Hunger games over')
 										 
